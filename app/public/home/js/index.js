@@ -1,7 +1,7 @@
-let url = 'http://data1.cn1.utools.club'
+let hostname = location.origin;
 let req = axios.create({
   // baseURL: 'http://192.168.43.16:7001',
-  baseURL: url,
+  baseURL: hostname
 })
 
 var getData = async (url) => {
@@ -73,7 +73,7 @@ async function find (name){
   }
 }
 
-function goUpdate(id,name){
+function goUpdate(name){
   $.alert({
       title: '  ',
       content: '  确认续卡？剩余次数将会累加。',
@@ -85,22 +85,22 @@ function goUpdate(id,name){
               text: '  ok  ',
               btnClass: 'btn-blue',
               action: function(){
-                update(id,name);
+                update(name);
               }
           }
       }
   });
 }
 
-async function update (id,name) {
-  let row = await this.getData(`update/${id}`);
+async function update (name) {
+  let row = await this.getData(`update/${name}`);
   if(row > 0) {
     find(name);
     tip('OK, 操作成功！');
   }
 }
 
-function goCost(id,name) {
+function goCost(name) {
   $.alert({
       title: '  ',
       content: '  确认消费？剩余次数将-1。',
@@ -112,15 +112,15 @@ function goCost(id,name) {
               text: '  ok  ',
               btnClass: 'btn-blue',
               action: function(){
-                cost(id,name);
+                cost(name);
               }
           }
       }
   });
 }
 
-async function cost (id,name) {
-  let row = await this.getData(`cost/${id}`);
+async function cost (name) {
+  let row = await this.getData(`cost/${name}`);
   if(row > 0) {
     find(name);
     tip('OK, 操作成功！');
@@ -133,9 +133,9 @@ function render(user) {
   user.forEach(item => {
     var button = '';
     if(item.times>0){
-      button = `<button  class="shinydarken enable" onclick="goCost(${item.id},'${item.name}')">消费</button>`
+      button = `<button  class="shinydarken enable" onclick="goCost('${item.name}')">消费</button>`
     }else{
-      button = `<button  disabled  class="shinydarken disabled" onclick="cost(${item.id})">消费</button>`
+      button = `<button  disabled  class="shinydarken disabled">消费</button>`
     }
     html += `<div class="card">
               <div class="items" onclick="showItems('${item.name}')">${item.name}</div>
@@ -144,7 +144,7 @@ function render(user) {
               <cite>上次消费时间:</cite><br>
               <cite><span class="record_time">${item.record_time}</span></cite><br>
               <cite>
-                <button class="shiny" onclick="goUpdate(${item.id},'${item.name}',this)">续卡</button>
+                <button class="shiny" onclick="goUpdate('${item.name}',this)">续卡</button>
                 ${button}
               </cite>
             </div>`
@@ -156,7 +156,7 @@ function render(user) {
 async function showItems(name){
   $.dialog({
       title: '消费记录详情',
-      content: `url:${url}/items/${name}`,
+      content: `url:${hostname}/items/${name}`,
       animation: 'scale',
       columnClass: 'medium',
       closeAnimation: 'scale',

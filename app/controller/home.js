@@ -35,16 +35,16 @@ class HomeController extends Controller {
   }
   async update() {
     const { ctx } = this;
-    const id = ctx.params.id;
-    const row = await ctx.service.user.update(id);
+    const name = ctx.params.name;
+    const row = await ctx.service.user.update(name);
     ctx.set('Access-Control-Allow-Origin', ctx.headers.origin); 
     ctx.set("Content-Type", "application/json");
     ctx.body = row;
   }
   async cost() {
     const { ctx } = this;
-    const id = ctx.params.id;
-    const row = await ctx.service.user.cost(id);
+    const name = ctx.params.name;
+    const row = await ctx.service.user.cost(name);
     ctx.set('Access-Control-Allow-Origin', ctx.headers.origin); 
     ctx.set("Content-Type", "application/json");
     ctx.body = row;

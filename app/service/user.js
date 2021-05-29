@@ -45,20 +45,20 @@ class UserService extends Service {
     let row = stmt.run(name);
     return row.changes;
   }
-  async update(id) {
+  async update(name) {
     const sql = `insert into card  
                   select null,name, times+10 times ,all_times+1 all_times  ,datetime('now','localtime') record_time from card
-                  where id = ?`;
+                  where id = (select max(id) from card where name = ?)`;
     let stmt = db.prepare(sql);
-    let row = stmt.run(id);
+    let row = stmt.run(name);
     return row.changes;
   }
-  async cost(id) {
+  async cost(name) {
     const sql = `insert into card 
                   select null,name, times-1  times,all_times,datetime('now','localtime') record_time from card 
-                  where id = ?`;
+                  where id = (select max(id) from card where name = ?)`;
     let stmt = db.prepare(sql);
-    let row = stmt.run(id);
+    let row = stmt.run(name);
     return row.changes;
   }
 }

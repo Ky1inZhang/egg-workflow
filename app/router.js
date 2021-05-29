@@ -10,8 +10,8 @@ module.exports = app => {
   router.get('/all', controller.home.all);
   router.get('/find/:name', controller.home.find);
   router.get('/add/:name', controller.home.add);
-  router.get('/update/:id', controller.home.update);
-  router.get('/cost/:id', controller.home.cost);
+  router.get('/update/:name', controller.home.update);
+  router.get('/cost/:name', controller.home.cost);
   router.get('/items/:name', controller.home.items);
 
 };
