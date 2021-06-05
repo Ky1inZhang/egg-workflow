@@ -1,5 +1,5 @@
 {
-  "name": "egg-demo",
+  "name": "feelingcard",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -21,7 +21,8 @@
     "eslint-config-egg": "^7.1.0"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": "14.x",
+    "npm": "6.x"
   },
   "scripts": {
     "start": "egg-scripts start --daemon --title=egg-server-egg",
@@ -33,7 +34,8 @@
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
-    "autod": "autod"
+    "autod": "autod",
+    "build": "npm install --production"
   },
   "ci": {
     "version": "10"
