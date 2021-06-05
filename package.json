@@ -1,5 +1,5 @@
 {
-  "name": "egg-demo",
+  "name": "feelingcard",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -33,7 +33,8 @@
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
-    "autod": "autod"
+    "autod": "autod",
+    "build":"npm install --production"
   },
   "ci": {
     "version": "10"
