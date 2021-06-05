@@ -21,11 +21,11 @@
     "eslint-config-egg": "^7.1.0"
   },
   "engines": {
-    "node": "10.x",
+    "node": "14.x",
     "npm": "6.x"
   },
   "scripts": {
-    "start": "egg-scripts start  --title=egg-server-egg",
+    "start": "egg-scripts start --daemon --title=egg-server-egg",
     "stop": "egg-scripts stop --title=egg-server-egg",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
