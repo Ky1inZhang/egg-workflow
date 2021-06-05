@@ -22,7 +22,7 @@
   },
   "engines": {
     "node": "14.x",
-    "npm":"6.x"
+    "npm": "6.x"
   },
   "scripts": {
     "start": "egg-scripts start --daemon --title=egg-server-egg",
@@ -35,7 +35,7 @@
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
     "autod": "autod",
-    "build":"npm install --production"
+    "build": "npm install --production"
   },
   "ci": {
     "version": "10"
