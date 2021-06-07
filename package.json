@@ -1,7 +1,7 @@
 {
   "name": "feelingcard",
   "version": "1.0.0",
-  "description": "",
+  "description": "feeling",
   "private": true,
   "egg": {
     "declarations": true
