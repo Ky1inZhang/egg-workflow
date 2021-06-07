@@ -20,5 +20,5 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - run: npm run build
+    - run: npm  install --production
     - run: npm start
