@@ -25,7 +25,7 @@
     "npm": "6.x"
   },
   "scripts": {
-    "start": "egg-scripts start -- port=8080 --daemon --title=egg-server-egg",
+    "start": "egg-scripts start --port=8080 --daemon --title=egg-server-egg",
     "stop": "egg-scripts stop --title=egg-server-egg",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
