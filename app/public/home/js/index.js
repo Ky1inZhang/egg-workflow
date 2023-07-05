@@ -5,24 +5,15 @@ let req = axios.create({
 })
 
 var getData = async (url) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      // req.get(url).then(res=>{			//url:http://127.0.0.1:80/api
-      //   resolve(res.data);
-      // }).catch(err=>{
-      //   console.error(err);
-      // });
-      // cf异常 通过使用匿名函数，可以避免TypeError异常，因为函数将作为函数表达式调用，而不是作为对象的方法调用
-      req.get(url).then(function(res) {
-          resolve(res.data);
-      }).catch(function(err) {
-          console.error(err);
-      });
-    },0)
-  })
-}
+  try {
+    const res = await req.get(url);
+    return res.data;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
 
-                    
 function goAdd() {
   var name = $('input[type=search]')[0].value;
   if(name.length == 0 ) return false;
